@@ -1,6 +1,3 @@
-from tempfile import TemporaryFile
-
-
 def bubble_sort(num_list):
     """
     :param num_list: List of numbers
