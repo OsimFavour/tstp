@@ -1,5 +1,5 @@
 def bottles_of_beer(bob):
-    """Use recuresion to print the bottles of beer song.
+    """Use recursion to print the bottles of beer song.
        :param bob: Integer number of beers that are on the wall
     """
     if bob < 1:
