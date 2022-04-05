@@ -1,7 +1,7 @@
-from stack import Stack 
+from stack import Stack as s 
 
 my_string = "Hello"
-stack = Stack()
+stack = s()
 
 for c in my_string:
     stack.push(c)
