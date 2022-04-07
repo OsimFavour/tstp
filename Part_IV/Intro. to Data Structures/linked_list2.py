@@ -1,28 +1,36 @@
+"""Create a Linked list
+"""
+
 class Node:
-    """Class representing one node in a linked list."""
-    def __init__(self, data) -> None:
+    def __init__(self, data, next=None) -> None:
         self.data = data
-        self.next = None
-        self.previous = None
+        self.next = next
 
-class LinkedList:
-    """Class representing a linked list data structure"""
-    def __init__(self, data) -> None:
-        self.head = Node(data)
+class Linkedlist:
+    def __init__(self) -> None:
+        self.head = None
 
-    def add(self, data):
-        """Add a new node to the linked list."""
-        previous_head = self.head
-        self.head = Node(data)
-        previous_head.previous = self.head
-        self.head.next = previous_head
+    def append(self, data):
+        if not self.head:
+            self.head = Node(data)
+            return
+        current = self.head
+        while current.next != None:
+            current = current.next
+        current.next = Node(data)
 
-linked_list = LinkedList()
-linked_list.add(1)
-linked_list.add(2)
-linked_list.add(3)
+    def __str__(self):
+        current_node = self.head
+        while current_node != None:
+            print(current_node.data)
+            current_node = current_node.next
 
-node = linked_list.head
-while node:
-    print(node.data)
-    node = node.next
+
+a_list = Linkedlist()
+a_list.append("Tuesday")
+a_list.append("Wednesday")
+a_list.append("Thursday")
+a_list.append("Friday")
+
+a_list.__str__()
+# print(a_list)

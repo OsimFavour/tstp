@@ -1,29 +1,28 @@
-# Linked list implementation in python
-
 class Node:
-    # creating a node
-    def __init__(self, item) -> None:
-        self.item = item
+    """Class representing one node in a linked list."""
+    def __init__(self, data) -> None:
+        self.data = data
         self.next = None
+        self.previous = None
 
-class Linkedlist:
-    def __init__(self) -> None:
-        self.head = None
+class LinkedList:
+    """Class representing a linked list data structure"""
+    def __init__(self, data) -> None:
+        self.head = Node(data)
 
-if __name__ == "__main__":          # N/B: this program can be written without the if name == main statement
+    def add(self, data):
+        """Add a new node to the linked list."""
+        previous_head = self.head
+        self.head = Node(data)
+        previous_head.previous = self.head
+        self.head.next = previous_head
 
-    linked_list = Linkedlist
+linked_list = LinkedList()
+linked_list.add(1)
+linked_list.add(2)
+linked_list.add(3)
 
-        # Assign item values
-    linked_list.head = Node(1)
-    second = Node(2)
-    third = Node(3)
-
-        # connect nodes
-    linked_list.head.next = second
-    second.next = third
-
-        # Print the linked list item
-    while linked_list.head != None:
-        print(linked_list.head.item, end = " ")
-        linked_list.head = linked_list.head.next
+node = linked_list.head
+while node:
+    print(node.data)
+    node = node.next
