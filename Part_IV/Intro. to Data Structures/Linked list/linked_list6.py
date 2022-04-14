@@ -30,30 +30,30 @@ class Linkedlist:
             elems.append(cur_node.data)
         print(elems)
 
-    def get(self, index):                                     # an extractor function to pull out a data point at a certain index from our linked list
-        if index >= self.length():
-            print("ERROR: 'Get' Index out of range!")
-            return None
-        cur_idx = 0                                           # create a variable to contain the current index
-        cur_node = self.head                                  # a variable to contain the current number we are looking at
-        while True:                                           # then begin the iteration
-            cur_node = cur_node.next
-            if cur_idx == index: return cur_node.data
-            cur_idx += 1
+    # def get(self, index):                                     # an extractor function to pull out a data point at a certain index from our linked list
+    #     if index >= self.length():
+    #         print("ERROR: 'Get' Index out of range!")
+    #         return None
+    #     cur_idx = 0                                           # create a variable to contain the current index
+    #     cur_node = self.head                                  # a variable to contain the current number we are looking at
+    #     while True:                                           # then begin the iteration
+    #         cur_node = cur_node.next
+    #         if cur_idx == index: return cur_node.data
+    #         cur_idx += 1
         
-    def erase(self, index):
-        if index >= self.length():
-            print("ERROR: 'Erase' Index out of range!")
-            return
-        cur_idx = 0
-        cur_node = self.head
-        while True:
-            last_node = cur_node
-            cur_node = cur_node.next
-            if cur_idx == index:
-                last_node.next = cur_node.next
-                return
-            cur_idx += 1
+    # def erase(self, index):
+    #     if index >= self.length():
+    #         print("ERROR: 'Erase' Index out of range!")
+    #         return
+    #     cur_idx = 0
+    #     cur_node = self.head
+    #     while True:
+    #         last_node = cur_node
+    #         cur_node = cur_node.next
+    #         if cur_idx == index:
+    #             last_node.next = cur_node.next
+    #             return
+    #         cur_idx += 1
 
 my_list = Linkedlist()
 
@@ -65,9 +65,9 @@ my_list.append(4)
 
 my_list.display()
 
-my_list.erase(1)
+# my_list.erase(1)
 
-my_list.display()
+# my_list.display()
 
 # print("element at 2nd index: %d" % my_list.get(2))
                                                                       
