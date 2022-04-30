@@ -1,113 +1,38 @@
-"""Lucid Programming @ Youtube"""
+"""tutorialspoint.com"""
 
-# Breadth first search _  Level Order Traversal
-
-class Queue(object):
-    def __init__(self) -> None:
-        self.items = []
-
-    def enqueue(self, item):
-        self.items.insert(0, item)
-
-    def dequeue(self):
-        if not self.is_empty():
-            return self.items.pop()
-
-    def is_empty(self):
-        return len(self.items) == 0
-
-    def peek(self):
-        if not self.is_empty():
-            return self.items[-1].value
-
-    def __len__(self):
-        return self.size()
-
-    def size(self):
-        return len(self.items) 
-
-class Node(object):
-    def __init__(self, value) -> None:
-        self.value = value
+class Node():
+    def __init__(self, data) -> None:
         self.left = None
         self.right = None
+        self.data = data
 
-class BinaryTree(object):
-    def __init__(self, root) -> None:
-        self.root = Node(root)
-
-    def print_tree(self, traversal_type):
-        if traversal_type == "preorder":
-            return self.preorder_print(tree.root, "") 
-        elif traversal_type == "inorder":
-            return self.inorder_print(tree.root, "")
-        elif traversal_type == "postorder":
-            return self.postorder_print(tree.root, "")
-        elif traversal_type == "levelorder":
-            return self.levelorder_print(tree.root)
+    def insert(self, value):
+# Compare the new value with the parent node
+        if self.data:
+            if value < self.data:
+                if self.left is None:
+                    self.left = Node(value)
+                else:
+                    self.left.insert(value)
+            elif value > self.data:
+                if self.right is None:
+                    self.right = Node(value)
+                else:
+                    self.right.insert(value)
         else:
-            print("Traversal type " + str(traversal_type) + " is not supported.")
-            return False 
+            self.data = value
 
-    def preorder_print(self, start, traversal):
-        """Root -> Left -> Right"""
-        if start:
-            traversal += (str(start.value) + "-")
-            traversal = self.preorder_print(start.left, traversal)
-            traversal = self.preorder_print(start.right, traversal)
-        return traversal
+# Print the tree
+    def print_tree(self):
+        if self.left:
+            self.left.print_tree()
+        print(self.data, end=" ")
+        if self.right:
+            self.right.print_tree()
 
-    def inorder_print(self, start, traversal):
-        """Left -> Root -> Right"""
-        if start:
-            traversal = self.inorder_print(start.left, traversal)
-            traversal += (str(start.value) + "-")
-            traversal = self.inorder_print(start.right, traversal)
-        return traversal
-
-    def postorder_print(self, start, traversal):
-        """Left -> Right -> Root"""
-        if start:
-            traversal = self.inorder_print(start.left, traversal)
-            traversal = self.inorder_print(start.right, traversal)
-            traversal += (str(start.value) + "-")
-        return traversal
-
-    def levelorder_print(self, start):
-        if start is None:
-            return
-
-        queue = Queue()
-        queue.enqueue(start)
-
-        traversal = ""
-        while len(queue) > 0:
-            traversal += str(queue.peek()) + "-"
-            node = queue.dequeue()
-
-            if node.left:
-                queue.enqueue(node.left)
-            if node.right:
-               queue.enqueue(node.right) 
-
-        return traversal 
-         
-
-#           1
-#
-#        /     \
-#      
-#       2        3
-#
-#     /   \     
-#
-#    4     5 
-
-#Set up tree:
-tree = BinaryTree(1)
-tree.root.left = Node(2)
-tree.root.right = Node(3)
-tree.root.left.left = Node(4)
-tree.root.left.right = Node(5)
-
-print(tree.print_tree("levelorder"))
+# Use the insert method to add nodes
+root = Node(12)
+root.insert(6)
+root.insert(14)
+root.insert(3)
+root.print_tree()
